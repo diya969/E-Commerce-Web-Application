@@ -1,40 +1,49 @@
-ShopFront 🛍️
-___________________________________________________________________________________________________________________________________
-A full-stack e-commerce web application built as a learning project to understand how frontend, backend, and database work together in a real-world app.
+# ShopFront 🛍️
 
-⚠️ This is a beginner learning project — not intended for production use.
+A full-stack e-commerce web application built as a **learning project** to understand how frontend, backend, and database work together in a real-world app.
 
+> ⚠️ This is a beginner learning project — not intended for production use.
 
-🧰 Tech Stack
+---
 
-LayerTechnologyFrontendReact 18 + ViteBackendSpring Boot 4 (Java 21)DatabaseMySQL 8AuthJWT (JSON Web Tokens)Image HostingCloudinaryStylingPlain CSS with CSS variables
+## 🧰 Tech Stack
 
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 18 + Vite |
+| Backend | Spring Boot 4 (Java 21) |
+| Database | MySQL 8 |
+| Auth | JWT (JSON Web Tokens) |
+| Image Hosting | Cloudinary |
+| Styling | Plain CSS with CSS variables |
 
-✨ Features
+---
 
+## ✨ Features
 
-Authentication — Register and login with JWT-based session management
-Product Listing — Browse products by category (Electronic Gadgets, Decorative Items, Sarees, Bangles)
-Product Detail Page — View full product info before adding to cart
-Shopping Cart — Add items, adjust quantities, remove products
-Checkout — Place orders with saved delivery address
-User Profile — Edit name and delivery address
-Sidebar Navigation — Collapsible category navigation with active state highlighting
-Home Page — Hero banner with product collage and category tiles
-Animated Order Success — SVG checkmark animation on order placement
-Responsive Layout — Works on desktop and tablet screens
+- **Authentication** — Register and login with JWT-based session management
+- **Product Listing** — Browse products by category (Electronic Gadgets, Decorative Items, Sarees, Bangles)
+- **Product Detail Page** — View full product info before adding to cart
+- **Shopping Cart** — Add items, adjust quantities, remove products
+- **Checkout** — Place orders with saved delivery address
+- **User Profile** — Edit name and delivery address
+- **Sidebar Navigation** — Collapsible category navigation with active state highlighting
+- **Home Page** — Hero banner with product collage and category tiles
+- **Animated Order Success** — SVG checkmark animation on order placement
+- **Responsive Layout** — Works on desktop and tablet screens
 
+---
 
+## 🖼️ Images
 
-🖼️ Images
-
-All product images are hosted on Cloudinary (free tier).
-
+All product images are hosted on **Cloudinary** (free tier).  
 No local image files are needed to run this project — images load directly from Cloudinary's CDN via URLs stored in the database.
 
+---
 
-🗂️ Project Structure
+## 🗂️ Project Structure
 
+```
 shopfront/
 ├── ecommerce-frontend/        # React + Vite frontend
 │   ├── src/
@@ -54,45 +63,55 @@ shopfront/
         ├── config/            # SecurityConfig (CORS + JWT filter chain)
         ├── dto/               # Request/Response DTOs
         └── exception/         # GlobalExceptionHandler
+```
 
+---
 
-🚀 Getting Started
+## 🚀 Getting Started
 
-Prerequisites
+### Prerequisites
 
+- Node.js 18+
+- Java 21
+- MySQL 8
+- Maven
 
-Node.js 18+
-Java 21
-MySQL 8
-Maven
+---
 
+### 1. Clone the repository
 
-
-1. Clone the repository
-
-bashgit clone https://github.com/your-username/shopfront.git
+```bash
+git clone https://github.com/your-username/shopfront.git
 cd shopfront
+```
 
+---
 
-2. Set up the database
+### 2. Set up the database
 
 Open MySQL Workbench and run:
 
-sqlCREATE DATABASE IF NOT EXISTS shopfront;
+```sql
+CREATE DATABASE IF NOT EXISTS shopfront;
+```
 
-The tables (users, products, orders) will be created automatically by Hibernate when the backend starts (ddl-auto=update).
+The tables (`users`, `products`, `orders`) will be created automatically by Hibernate when the backend starts (`ddl-auto=update`).
 
+---
 
-3. Configure the backend
+### 3. Configure the backend
 
 Copy the example config and fill in your values:
 
-bashcd ecommerce-backend
+```bash
+cd ecommerce-backend
 cp src/main/resources/application.properties.example src/main/resources/application.properties
+```
 
-Edit application.properties:
+Edit `application.properties`:
 
-propertiesspring.datasource.url=jdbc:mysql://localhost:3306/shopfront?createDatabaseIfNotExist=true
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/shopfront?createDatabaseIfNotExist=true
 spring.datasource.username=your_mysql_username
 spring.datasource.password=your_mysql_password
 
@@ -100,33 +119,42 @@ jwt.secret=your_random_secret_key_minimum_32_characters
 jwt.expiration-ms=86400000
 
 server.port=8080
+```
 
+---
 
-4. Run the backend
+### 4. Run the backend
 
-Open the ecommerce-backend folder in IntelliJ IDEA and click Run, or from the terminal:
+Open the `ecommerce-backend` folder in IntelliJ IDEA and click **Run**, or from the terminal:
 
-bashcd ecommerce-backend
+```bash
+cd ecommerce-backend
 ./mvnw spring-boot:run
+```
 
-Backend starts at http://localhost:8080
+Backend starts at `http://localhost:8080`
 
+---
 
-5. Set up the frontend
+### 5. Set up the frontend
 
-bashcd ecommerce-frontend
+```bash
+cd ecommerce-frontend
 cp .env.example .env
 npm install
 npm run dev
+```
 
-Frontend starts at http://localhost:5173
+Frontend starts at `http://localhost:5173`
 
+---
 
-6. Seed sample products
+### 6. Seed sample products
 
 After the backend starts (so Hibernate creates the tables), run this in MySQL Workbench to add sample products:
 
-sqlUSE shopfront;
+```sql
+USE shopfront;
 
 INSERT INTO products (name, price, description, image_url, category) VALUES
 ('Wireless Mouse', 599.00, 'Ergonomic wireless mouse with USB receiver', 'YOUR_CLOUDINARY_URL', 'Electronic Gadgets'),
@@ -141,37 +169,42 @@ INSERT INTO products (name, price, description, image_url, category) VALUES
 ('Cotton Printed Saree', 1299.00, 'Lightweight daily-wear cotton saree with floral print', 'YOUR_CLOUDINARY_URL', 'Sarees'),
 ('Gold Plated Bangles Set', 899.00, 'Set of 6 gold-plated traditional bangles', 'YOUR_CLOUDINARY_URL', 'Bangles'),
 ('Glass Chudi Set', 499.00, 'Colorful glass bangle set, pack of 2', 'YOUR_CLOUDINARY_URL', 'Bangles');
+```
 
-Replace YOUR_CLOUDINARY_URL with your own Cloudinary image URLs, or any public image URL.
+Replace `YOUR_CLOUDINARY_URL` with your own Cloudinary image URLs, or any public image URL.
 
+---
 
-🔑 API Endpoints
+## 🔑 API Endpoints
 
-MethodEndpointAuthDescriptionPOST/api/auth/register❌Register new userPOST/api/auth/login❌Login, returns JWTGET/api/products❌Get all productsGET/api/products/{id}❌Get product by IDPOST/api/orders✅Place an orderGET/api/orders/my✅Get my ordersGET/api/user/profile✅Get profilePUT/api/user/profile✅Update name and address
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/auth/register` | ❌ | Register new user |
+| POST | `/api/auth/login` | ❌ | Login, returns JWT |
+| GET | `/api/products` | ❌ | Get all products |
+| GET | `/api/products/{id}` | ❌ | Get product by ID |
+| POST | `/api/orders` | ✅ | Place an order |
+| GET | `/api/orders/my` | ✅ | Get my orders |
+| GET | `/api/user/profile` | ✅ | Get profile |
+| PUT | `/api/user/profile` | ✅ | Update name and address |
 
+---
 
-📚 What I Learned
+## 📚 What I Learned
 
+- How to connect a React frontend to a Spring Boot REST API
+- JWT authentication flow (token generation, filter chain, protected routes)
+- JPA entities, repositories, and relationships (`@ManyToOne`, `@JoinColumn`)
+- Spring Security configuration (CORS, stateless sessions, route permissions)
+- React Context API for global state (auth, cart)
+- React Router with dynamic routes (`/products/:category/:id`)
+- CSS variables for consistent theming across components
+- Hosting images on Cloudinary and referencing them via URL in a database
+- Debugging real errors: SQL safe mode, Spring Security import paths, JWT filter setup
 
-How to connect a React frontend to a Spring Boot REST API
-JWT authentication flow (token generation, filter chain, protected routes)
-JPA entities, repositories, and relationships (@ManyToOne, @JoinColumn)
-Spring Security configuration (CORS, stateless sessions, route permissions)
-React Context API for global state (auth, cart)
-React Router with dynamic routes (/products/:category/:id)
-CSS variables for consistent theming across components
-Hosting images on Cloudinary and referencing them via URL in a database
-Debugging real errors: SQL safe mode, Spring Security import paths, JWT filter setup
+---
 
+## 👩‍💻 Author
 
-
-📸 Screenshots
-
-
-
-
-👩‍💻 Author
-
-Krishna Deepika K
-
+**Krishna Deepika K**  
 Built as a personal learning project to practise full-stack development with Java Spring Boot and React.
